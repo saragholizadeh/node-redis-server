@@ -1,0 +1,21 @@
+/node_modules
+
+# Logs
+logs
+*.log
+
+# Tests
+/coverage
+
+# IDEs and editors
+/.idea
+
+# IDE - VSCode
+.vscode/*
+
+# dotenv environment variable files
+.env
+
+# temp directory
+.temp
+
