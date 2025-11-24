@@ -101,15 +101,3 @@ Postman will automatically import the full API collection
 - Basic centralized error handling
 
 
-Feel free to open issues or submit PRs.
-
-This project is intentionally minimal and ideal for experimentation or education.
-
-
-
-ISC License
-
-Permission to use, copy, modify, and distribute this software
-for any purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES.
