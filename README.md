@@ -1,9 +1,8 @@
 # Node Redis Server (Custom In-Memory Redis Clone)
-
 A simple, modular, Redis-like in-memory database built with Node.js.  
 This project is designed for learning purposes :]
 
---- 
+
 
 
 # 📌 Roadmap (TODO)
