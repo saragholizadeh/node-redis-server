@@ -45,7 +45,7 @@ Currently working on:
 
 **➡ Phase 1 — Completing Redis Core Features (Pub/Sub implemented)**
 
----
+
 
 ## 🚀 Getting Started
 
@@ -60,7 +60,7 @@ node server.js
 ```
 The server runs on port 3000 by default.
 
----
+
 
 ## 🧪 Auto-Generated Postman Collection
 
@@ -78,7 +78,7 @@ The response includes:
 - Request bodies (auto-detected)
 - Path parameters 
 - Descriptions
----
+
 
 Import into Postman:
 
@@ -88,7 +88,7 @@ Import into Postman:
 
 Postman will automatically import the full API collection
 
----
+
 
 ## 🧩 Current Features
 
@@ -105,7 +105,7 @@ Feel free to open issues or submit PRs.
 
 This project is intentionally minimal and ideal for experimentation or education.
 
----
+
 
 ISC License
 
