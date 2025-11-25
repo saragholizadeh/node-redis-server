@@ -6,15 +6,14 @@ This project is designed for learning purposes :]
 
 
 # 📌 Roadmap (TODO)
-### 1️⃣ Phase 1 — Redis Core Commands
+### 1️⃣ Phase 1 — Redis Core Commands 
 
 - [x] SET / GET / DEL
 - [x] TTL / EXPIRE
 - [x] INCR / DECR
 - [x] Basic Pub/Sub
-- [ ] Lists → LPUSH, RPUSH, LPOP, RPOP
+- [x] Lists → LPUSH, RPUSH, LPOP, RPOP
 - [ ] Hashes → HSET, HGET, HDEL, HGETALL
-- [ ] Key pattern scanning → KEYS <pattern>
 
 ### 2️⃣ Phase 2 — Persistence
 

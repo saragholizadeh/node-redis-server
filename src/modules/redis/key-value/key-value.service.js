@@ -1,38 +1,7 @@
-const datastore = require('../../core/datastore');
-const ValidationError = require("../../common/errors/validation.error");
-const redisService = require("./redis.service");
+const ValidationError = require("../../../common/errors/validation.error");
+const datastore = require("../../../core/datastore");
 
-class RedisService {
-    constructor() {
-        this.channels = new Map();
-    }
-
-    publish(req, res) {
-        const delivered = redisService.publish(req.body);
-        return res.json({ delivered });
-    }
-
-    subscribe(req, res) {
-        const channel = req.params.channel;
-
-        res.writeHead(200, {
-            "Content-Type": "text/event-stream",
-            "Cache-Control": "no-cache",
-            "Connection": "keep-alive"
-        });
-
-        const send = (msg) => {
-            res.write(`data: ${JSON.stringify(msg)}\n\n`);
-        };
-
-        redisService.subscribe(channel, send);
-
-        req.on("close", () => {
-            redisService.unsubscribe(channel, send);
-        });
-    }
-
-
+class RedisKeyValueService {
     set({ key, value, ttl }) {
         if (!key || value === undefined) throw new ValidationError('Invalid key or value');
         const ttlMs = ttl ? ttl * 1000 : undefined;
@@ -70,4 +39,4 @@ class RedisService {
     }
 }
 
-module.exports = new RedisService();
+module.exports = new RedisKeyValueService();

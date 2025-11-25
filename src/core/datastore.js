@@ -2,6 +2,7 @@ class DataStore {
     constructor() {
         this.store = new Map();
         this.ttl = new Map();
+        this.lists = new Map();
     }
 
     set(key, value, ttlMs) {
@@ -55,6 +56,35 @@ class DataStore {
         for (const [key, exp] of this.ttl.entries()) {
             if (now > exp) this.del(key);
         }
+    }
+
+    lpush(key, value) {
+        if (!this.lists.has(key)) this.lists.set(key, []);
+        this.lists.get(key).unshift(value);
+        return this.lists.get(key).length;
+    }
+
+    rpush(key, value) {
+        if (!this.lists.has(key)) this.lists.set(key, []);
+        this.lists.get(key).push(value);
+        return this.lists.get(key).length;
+    }
+
+    lpop(key) {
+        if (!this.lists.has(key) || this.lists.get(key).length === 0) return null;
+        return this.lists.get(key).shift();
+    }
+
+    rpop(key) {
+        if (!this.lists.has(key) || this.lists.get(key).length === 0) return null;
+        return this.lists.get(key).pop();
+    }
+
+    lrange(key, start = 0, end = -1) {
+        if (!this.lists.has(key)) return [];
+        const list = this.lists.get(key);
+        if (end === -1) end = list.length - 1;
+        return list.slice(start, end + 1);
     }
 }
 

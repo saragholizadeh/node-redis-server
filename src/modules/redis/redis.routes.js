@@ -1,16 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const redisController = require('./redis.controller');
 
-router.post('/set', redisController.set);
-router.get('/get/:key', redisController.get);
-router.delete('/del/:key', redisController.del);
-router.post('/incr/:key', redisController.incr);
-router.post('/decr/:key', redisController.decr);
-router.post('/expire', redisController.expire);
-router.get('/ttl/:key', redisController.ttl);
+const path = require("path");
+const fs = require("fs");
 
-router.post('/publish', redisController.publish);
-router.get('/subscribe/:channel', redisController.subscribe);
+const submodules = ["pub-sub", "key-value", "lists"];
+
+submodules.forEach((name) => {
+    const routePath = path.join(__dirname, name, `${name}.routes.js`);
+    if (fs.existsSync(routePath)) {
+        const subRouter = require(routePath);
+        router.use(`/${name}`, subRouter);
+        console.log(`↳ Redis loaded: /api/redis/${name}`);
+    } else {
+        console.warn(`⚠️ Route not found for redis submodule: ${name}`);
+    }
+});
 
 module.exports = router;
