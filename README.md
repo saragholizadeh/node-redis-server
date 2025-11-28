@@ -1,12 +1,24 @@
-# Node Redis Server (Custom In-Memory Redis Clone)
-A simple, modular, Redis-like in-memory database built with Node.js.  
-This project is designed for learning purposes :]
+<h1>Node Redis Server</h1>
+
+<p>
+
+I'm building my own Redis-like server using Node.js and Express.
+This project is focused on learning, clean architecture, and scalable code organization.
+It uses:
+- Modular Architecture (feature-based structure for better scalability & maintainability)
+- Separation of Concerns (SoC) (controllers for HTTP, services for logic, datastore for persistence)
+- Single Responsibility Principle (SRP) from SOLID (each layer has exactly one job)
+- Clean Architecture principles (isolated domain logic + easy to test components)
+- Auto-module loader (convention-over-configuration to register routes automatically)
+- Domain Encapsulation / Lightweight DDD (key-value, Pub/Sub, Lists treated as isolated domains)
+
+</p>
 
 
 
+<h3>📌 Roadmap (TODO)</h3>
 
-# 📌 Roadmap (TODO)
-### 1️⃣ Phase 1 — Redis Core Commands 
+### 1️⃣ Phase 1 — Redis Core Commands (Currently working here 🟢)
 
 - [x] SET / GET / DEL
 - [x] TTL / EXPIRE
@@ -38,11 +50,6 @@ This project is designed for learning purposes :]
 
 - [ ] Full test coverage
 
-## 🟢 Current Development Stage
-
-Currently working on:
-
-**➡ Phase 1 — Completing Redis Core Features (Pub/Sub implemented)**
 
 
 
@@ -87,16 +94,6 @@ Import into Postman:
 
 Postman will automatically import the full API collection
 
+<hr>
 
-
-## 🧩 Current Features
-
-- Clean 3-layer architecture (Controller → Service → Core)
-- Dynamic routing / module auto-loader 
-- In-memory key/value store 
-- TTL manager with background cleanup 
-- Pub/Sub (with optional SSE endpoint)
-- Automatic Postman Collection generator 
-- Basic centralized error handling
-
-
+Gonna add more details soon  :)
