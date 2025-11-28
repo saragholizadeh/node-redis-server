@@ -1,5 +1,5 @@
 const ValidationError = require("../../../common/errors/validation.error");
-const datastore = require("../core/datastore");
+const datastore = require("../../../core/redis-datastore");
 
 class RedisListService {
     lpush({ key, value }) {

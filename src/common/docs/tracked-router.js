@@ -8,8 +8,7 @@ function createTrackedRouter(basePath = "") {
     const router = express.Router();
 
     const track = (method, path, handlers) => {
-        const metaMiddleware = handlers.find(h => h.name === "metaMiddleware");
-
+        const metaMiddleware = handlers.find(h => h.name === "metaMiddleware" || h._name === "metaMiddleware");
         const meta = metaMiddleware ? metaMiddleware.metadata : {};
 
         global.__registeredRoutes.push({

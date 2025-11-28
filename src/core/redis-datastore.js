@@ -1,15 +1,20 @@
-class DataStore {
+const AOF = require("./persistence/aof");
+
+class RedisDatastore {
     constructor() {
         this.store = new Map();
         this.ttl = new Map();
         this.lists = new Map();
         this.hashes = new Map();
+        this.aof = new AOF(this);
     }
 
     set(key, value, ttlMs) {
         this.store.set(key, value);
         if (ttlMs) this.ttl.set(key, Date.now() + ttlMs);
         else this.ttl.delete(key);
+
+        this.aof.append('SET', { key, value, ttl: ttlMs ? ttlMs / 1000 : undefined });
         return true;
     }
 
@@ -23,7 +28,9 @@ class DataStore {
 
     del(key) {
         this.ttl.delete(key);
-        return this.store.delete(key);
+        this.store.delete(key);
+        this.aof.append('DEL', { key });
+        return true;
     }
 
     incr(key) {
@@ -62,12 +69,14 @@ class DataStore {
     lpush(key, value) {
         if (!this.lists.has(key)) this.lists.set(key, []);
         this.lists.get(key).unshift(value);
+        this.aof.append('LPUSH', { key, value });
         return this.lists.get(key).length;
     }
 
     rpush(key, value) {
         if (!this.lists.has(key)) this.lists.set(key, []);
         this.lists.get(key).push(value);
+        this.aof.append('RPUSH', { key, value });
         return this.lists.get(key).length;
     }
 
@@ -92,6 +101,7 @@ class DataStore {
         if (!this.hashes.has(key)) this.hashes.set(key, new Map());
         const hash = this.hashes.get(key);
         hash.set(field, value);
+        this.aof.append('HSET', { key, field, value });
         return true;
     }
 
@@ -102,7 +112,9 @@ class DataStore {
 
     hdel(key, field) {
         if (!this.hashes.has(key)) return false;
-        return this.hashes.get(key).delete(field);
+        const result = this.hashes.get(key).delete(field);
+        this.aof.append('HDEL', { key, field });
+        return result;
     }
 
     hgetall(key) {
@@ -112,6 +124,7 @@ class DataStore {
     }
 }
 
-const datastore = new DataStore();
+const datastore = new RedisDatastore();
 setInterval(() => datastore.cleanup(), 1000);
+
 module.exports = datastore;

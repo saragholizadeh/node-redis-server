@@ -18,18 +18,18 @@ It uses:
 
 <h3>📌 Roadmap (TODO)</h3>
 
-### 1️⃣ Phase 1 — Redis Core Commands (Currently working here 🟢)
+### 1️⃣ Phase 1 — Redis Core Commands 
 
 - [x] SET / GET / DEL
 - [x] TTL / EXPIRE
 - [x] INCR / DECR
 - [x] Basic Pub/Sub
 - [x] Lists → LPUSH, RPUSH, LPOP, RPOP
-- [ ] Hashes → HSET, HGET, HDEL, HGETALL
+- [x] Hashes → HSET, HGET, HDEL, HGETALL
 
-### 2️⃣ Phase 2 — Persistence
+### 2️⃣ Phase 2 — Persistence (Currently working here 🟢)
 
-- [ ] Append-Only File (AOF)
+- [x] Append-Only File (AOF)
 - [ ] Snapshot system (RDB-like)
 
 ### 3️⃣ Phase 3 — Performance / Scaling
