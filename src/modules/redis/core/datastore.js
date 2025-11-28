@@ -3,6 +3,7 @@ class DataStore {
         this.store = new Map();
         this.ttl = new Map();
         this.lists = new Map();
+        this.hashes = new Map();
     }
 
     set(key, value, ttlMs) {
@@ -85,6 +86,29 @@ class DataStore {
         const list = this.lists.get(key);
         if (end === -1) end = list.length - 1;
         return list.slice(start, end + 1);
+    }
+
+    hset(key, field, value) {
+        if (!this.hashes.has(key)) this.hashes.set(key, new Map());
+        const hash = this.hashes.get(key);
+        hash.set(field, value);
+        return true;
+    }
+
+    hget(key, field) {
+        if (!this.hashes.has(key)) return null;
+        return this.hashes.get(key).get(field) ?? null;
+    }
+
+    hdel(key, field) {
+        if (!this.hashes.has(key)) return false;
+        return this.hashes.get(key).delete(field);
+    }
+
+    hgetall(key) {
+        if (!this.hashes.has(key)) return {};
+        const hash = this.hashes.get(key);
+        return Object.fromEntries(hash.entries());
     }
 }
 
