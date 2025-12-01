@@ -1,6 +1,6 @@
 const express = require("express");
-const createTrackedRouter = require("../../../common/docs/tracked-router");
-const meta = require("../../../common/docs/route-meta");
+const createTrackedRouter = require("../../common/docs/tracked-router");
+const meta = require("../../common/docs/route-meta");
 const redisHashController = require("./hash.controller");
 
 const router = createTrackedRouter("/hash");

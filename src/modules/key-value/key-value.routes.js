@@ -1,6 +1,6 @@
 const redisKeyValueController = require('./key-value.controller');
-const meta = require('../../../common/docs/route-meta');
-const createTrackedRouter = require('../../../common/docs/tracked-router');
+const meta = require('../../common/docs/route-meta');
+const createTrackedRouter = require('../../common/docs/tracked-router');
 
 const router = createTrackedRouter('/key-value');
 

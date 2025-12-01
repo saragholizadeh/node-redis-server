@@ -8,8 +8,12 @@ function loadModules(app, modulesPath) {
 
     folders.forEach(folder => {
         const routeFile = path.join(modulesPath, folder, `${folder}.routes.js`);
+
         if (fs.existsSync(routeFile)) {
             const router = require(routeFile);
+
+            router.__baseFolder = folder;
+
             app.use(`/api/${folder}`, router);
             console.log(`Loaded module routes: /api/${folder}`);
         }

@@ -1,5 +1,5 @@
 const redisHashService = require("./hash.service");
-const ValidationError = require("../../../common/errors/validation.error");
+const ValidationError = require("../../common/errors/validation.error");
 
 class RedisHashController {
     hset(req, res) {

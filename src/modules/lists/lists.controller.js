@@ -1,4 +1,4 @@
-const ValidationError = require("../../../common/errors/validation.error");
+const ValidationError = require("../../common/errors/validation.error");
 const redisListService = require("./lists.service");
 
 class RedisListController {
