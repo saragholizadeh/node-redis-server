@@ -27,9 +27,8 @@ It uses:
 - [x] Lists → LPUSH, RPUSH, LPOP, RPOP
 - [x] Hashes → HSET, HGET, HDEL, HGETALL
 
-### 2️⃣ Phase 2 — Persistence (Currently working here 🟢)
+### 2️⃣ Phase 2 — Persistence 
 
-- [x] Append-Only File (AOF)
 - [ ] Snapshot system (RDB-like)
 
 ### 3️⃣ Phase 3 — Performance / Scaling
