@@ -15,43 +15,6 @@ It uses:
 </p>
 
 
-
-<h3>📌 Roadmap (TODO)</h3>
-
-### 1️⃣ Phase 1 — Redis Core Commands 
-
-- [x] SET / GET / DEL
-- [x] TTL / EXPIRE
-- [x] INCR / DECR
-- [x] Basic Pub/Sub
-- [x] Lists → LPUSH, RPUSH, LPOP, RPOP
-- [x] Hashes → HSET, HGET, HDEL, HGETALL
-
-### 2️⃣ Phase 2 — Persistence 
-
-- [ ] Snapshot system (RDB-like)
-
-### 3️⃣ Phase 3 — Performance / Scaling
-
-- [ ] Locking (SETNX)
-
-- [ ] Rate limiting
-
-- [ ] Basic sharding
-
-- [ ] Worker threads for parallelism
-
-### 4️⃣ Phase 4 — Protocol + TCP Server
-
-- [ ] Native TCP server
-
-- [ ] RESP protocol support (Redis wire protocol)
-
-- [ ] Full test coverage
-
-
-
-
 ## 🚀 Getting Started
 
 ### Install dependencies
